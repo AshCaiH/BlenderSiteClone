@@ -78,7 +78,9 @@
         <div class="feature feat-offset-{{isOdd}}">    
             <div class="feat-container">        
                 <h2>{{subpage.title}}</h2>
+                {% filter indent(width=16) -%}
                 {{ subpage.content | safe }}
+                {% endfilter %}
             </div>
             <img src="./images/{{subpage.image}}">
         </div>
@@ -88,7 +90,7 @@
     </section>
 
     <div class="call-to-action fix-width">
-    <p>The Freedom to Create.</p><a href="" class="blue-glow">Download Blender</a>
+        <p>The Freedom to Create.</p><a href="" class="blue-glow">Download Blender</a>
     </div>
 
     <div id="footer">

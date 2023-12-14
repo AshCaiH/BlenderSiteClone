@@ -1,10 +1,10 @@
 <div id="navbar">
     <div class="fix-width">
         <a href=""><div id="navLogo"><img src="images/navLogo.svg"></div></a>
-            <div class="navLinks">
+        <div class="navLinks">
             {% set navLinks = ["Features", "Download", "Support", "Get Involved", "About", "Jobs", "Store"] %}
-            {% for page in navLinks -%}    
-                <a href="">{{page}}</a>{{ "
+            {% for page in navLinks -%}
+            <a href="">{{page}}</a>{{ "
             " if not loop.last }}{# Stops it adding the extra space at the end #}
             {%- endfor %}
             <a href="" class="donate-btn blue-glow"><span class="icon-heart"></span>Donate</a>
