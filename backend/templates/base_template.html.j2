@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/icons.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>blender.org - Home of the Blender project - Free and Open 3D Creation Software</title>
+</head>
+<body>
+
+<div id="container">
+    {% filter indent(width=4) -%}
+    {% with title=title %}{% include "navbar.html.j2" %}{% endwith %}
+    {% endfilter %}
+
+    <div id="hero">
+        <div class="hero-overlay">
+            <div class="fix-width">
+                <h1>Blender 4.0</h1>
+                <h3>Introducing Cycles Light Linking, new Principled BSDF shader, better Color Management, and so much more!</h3>
+                <div class="hero-links">
+                    <a href="" class="hero-link hero-download download-button">Download</a>
+                    <a href="" class="hero-link">What's New</a>
+                </div>
+            </div>
+            <p class="credit">by Gaku Tada</p>
+        </div>
+    </div>
+    <section id="content" class="fix-width">
+        {% with news_sections=news_sections %}
+        {%- for section in news_sections -%}
+        <h2>{{section.name}}</h2>
+        <div class="news-section">
+        {%- for item in section['items'] -%}
+        <div class="news-item">
+            <div class="newsthumbcontainer">
+                <img src="./images/{{item.thumbnail}}" class="newsthumb">
+            </div>
+            <h3>{{item.title}}</h3>
+            <p>{{item.desc}}</p>
+        </div>
+        {%- endfor -%}
+        </div>
+        {%- endfor -%}
+        {% filter indent(width=8) -%}
+        {#{% block content -%}{{ content | safe }}{%- endblock -%}#}
+        {% endfilter %}
+        {% endwith %}
+        <div class="info-block ib-foss">
+            <div>
+                <h1>Free and open Source</h1>
+                <p>Blender is a public project hosted on blender.org, licensed as GNU GPL, owned by its contributors.</p><p>For that reason Blender is Free and Open Source software, forever. <a href="">Learn more</a></p>
+            </div>
+            <img src="./images/blender_fund_hex-e1629996297522.png">
+
+        </div>
+        <div class="info-block ib-industry">
+            <div>
+                <h1>Part of the industry</h1>
+                <p>Blender is a member of ASWF, Khronos, Linux Foundation and OIN. It’s also well supported by major hardware vendors such as AMD, Apple, Intel, and NVIDIA.</p>
+            </div>
+            <div class="ib-images">
+                <img src="./images/khronos.png">
+                <img src="./images/linux_foundation.png">
+                <img src="./images/open_invention_network.png">
+                <img src="./images/academy_software_foundation.png">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="fix-width">
+        <h1><br>Everything You Need</h1>
+        {% with sections=sections %}
+        {%- for section in sections.values() -%}
+        {%- for subpage in section -%}
+        {% set isOdd = loop.index%2 %}
+        <div class="feature feat-offset-{{isOdd}}">    
+            <div class="feat-container">        
+                <h2>{{subpage.title}}</h2>
+                {{ subpage.content | safe }}
+            </div>
+            <img src="./images/{{subpage.image}}">
+        </div>
+        {%- endfor -%}
+        {%- endfor -%}
+        {% endwith %}
+    </section>
+
+    <div class="call-to-action fix-width">
+    <p>The Freedom to Create.</p><a href="" class="blue-glow">Download Blender</a>
+    </div>
+
+    <div id="footer">
+        <div id="footer-content" class="fix-width">
+            {% set footeritems = 
+                [
+                [['Download', 'Latest Blender', 'Blender LTS', 'Blender Benchmark', 'Previous Versions', 'Experimental Builds', 'Source Code', 'Release Notes', 'Requirements'], 
+                ['Organization', 'People', 'Jobs']], 
+                [['About', 'Blender Foundation', 'Blender Institute', 'Blender Studio', 'License', 'Logo & Trademark', 'Credits', 'Privacy Policy'], 
+                ['Articles', 'News', 'Press Releases', 'User Stories']], 
+                [['Get Involved', 'Dashboard', 'Development', 'Documentation', 'Education'], 
+                ['Donate', 'Development Fund', 'One-time Donations'], 
+                ['Blender Studio', 'Films', 'Training']], 
+                [['Developers', 'Get Started', 'Projects', 'Docs', 'Blog', 'Forum', 'Python API'], 
+                ['Support', 'Manual', 'Community', 'FAQ'], 
+                ['Blender Conference']
+                ]]
+            %}
+
+            {%- for column in footeritems -%}
+            <div class="footer-column">
+                {%- for section in column -%}
+                <div class="footer-section">
+                    {%- for item in section -%}
+                    <a href="" {{ "class=footer-header" if loop.index == 1 }} >{{item}}</a>
+                    {%- endfor -%}
+                </div>
+                {%- endfor -%}
+            </div>
+            {%- endfor -%}
+
+            <div class="soc-med">
+                <p class="footer-header">Follow Blender:</p>
+                <ul>
+                    {% set sites = [
+                        ["youtube", "Youtube"], 
+                        ["twitter", "Twitter"], 
+                        ["instagram", "Instagram"], 
+                        ["facebook", "Facebook"], 
+                        ["linkedin", "LinkedIn"] 
+                    ] %}
+                    {% for site in sites -%}
+                    <li><a href="https://{{site[0]}}.com" target="_blank"><span aria-label="{{site[0]}} logo" class="icon-{{site[0]}}"></span> {{site[1]}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <p>Artistic freedom starts with Blender <span class="icon-heart"></span> The Free and Open Source 3D Creation Suite</p>
+    </div>
+</div>
+    
+</body>
+</html>
