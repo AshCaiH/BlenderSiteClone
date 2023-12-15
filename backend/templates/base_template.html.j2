@@ -29,20 +29,20 @@
     </div>
     <section id="content" class="fix-width">
         {% with news_sections=news_sections %}
-        {%- for section in news_sections -%}
+        {% for section in news_sections -%}
         <h2>{{section.name}}</h2>
         <div class="news-section">
-        {%- for item in section['items'] -%}
-        <div class="news-item">
-            <div class="newsthumbcontainer">
-                <img src="./images/{{item.thumbnail}}" class="newsthumb">
+        {% for item in section['items'] -%}
+            <div class="news-item">
+                <div class="newsthumbcontainer">
+                    <img src="./images/{{item.thumbnail}}" class="newsthumb">
+                </div>
+                <h3>{{item.title}}</h3>
+                <p>{{item.desc}}</p>
             </div>
-            <h3>{{item.title}}</h3>
-            <p>{{item.desc}}</p>
+        {%- endfor %}
         </div>
-        {%- endfor -%}
-        </div>
-        {%- endfor -%}
+        {%- endfor %}
         {% filter indent(width=8) -%}
         {#{% block content -%}{{ content | safe }}{%- endblock -%}#}
         {% endfilter %}
@@ -110,17 +110,17 @@
                 ]]
             %}
 
-            {%- for column in footeritems -%}
+            {% for column in footeritems %}
             <div class="footer-column">
-                {%- for section in column -%}
+                {% for section in column -%}
                 <div class="footer-section">
-                    {%- for item in section -%}
-                    <a href="" {{ "class=footer-header" if loop.index == 1 }} >{{item}}</a>
-                    {%- endfor -%}
+                    {%- for item in section %}
+                    <a href=""{{ " class=footer-header" if loop.index == 1 }}>{{item}}</a>
+                    {%- endfor %}
                 </div>
-                {%- endfor -%}
+                {%- endfor %}
             </div>
-            {%- endfor -%}
+            {%- endfor %}
 
             <div class="soc-med">
                 <p class="footer-header">Follow Blender:</p>

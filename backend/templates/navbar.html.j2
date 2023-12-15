@@ -4,7 +4,7 @@
         <div class="collapse-nav"><a href=""><span class="icon-menu"></span></a></div>
         <div class="navLinks">
             {% set navLinks = ["Features", "Download", "Support", "Get Involved", "About", "Jobs", "Store"] %}
-            {% for page in navLinks -%}
+            {%- for page in navLinks -%}
             <a href="">{{page}}</a>{{ "
             " if not loop.last }}{# Stops it adding the extra space at the end #}
             {%- endfor %}
